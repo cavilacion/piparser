@@ -1,0 +1,6 @@
+(new x x) (new x x) (new x x)
+x1<y1> .
+
+  (y2(a) . 0 | z2<true> . 0)
+|x2(s) .
+  (s<true> . 0 | z1(a) . 0)

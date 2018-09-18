@@ -1,0 +1,31 @@
+%{
+#include "token.h"
+
+%}
+name [a-z]+[0-9]*
+invalid [a-z0-9\`\!\@\#\$\%\^\&\*\_\+\=\-\~\,\/\;\'\"\"\?]+
+
+%%
+
+[ \t\n]+	 { /* ignore spaces, tabs, and newlines */ }		 	
+
+"new "		 { return RESTR; }   /* restriction operator */
+
+{name}     { return NAME; } 
+
+\(				 { return L_PAR;  }	
+\)				 { return R_PAR;  }
+\<				 { return L_BRACK; }
+\>				 { return R_BRACK; }
+
+\.				 { return OP_SEQ;  }
+\|				 { return OP_PAR;  }
+0					 { return STOP;  }
+<<EOF>>		 { return END_OF_INPUT; }
+
+
+{invalid}|.	{ return INVALID_TOKEN; }
+
+%%
+
+
